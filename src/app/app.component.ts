@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UserInterface} from './interfaces/user.interface';
+import {UserClass} from './classes/user.class';
 
 @Component({
     selector: 'app-root',
@@ -8,9 +8,16 @@ import {UserInterface} from './interfaces/user.interface';
 })
 export class AppComponent {
     title = 'corso-angular';
+    showForm = false;
+    userSelected: UserClass = new UserClass();
 
-    userSelected: UserInterface;
-    updateUser(user: UserInterface) {
+    updateUser(user: UserClass) {
         this.userSelected = user;
+        this.showForm = true;
+    }
+
+    newUser() {
+        this.userSelected = new UserClass();
+        this.showForm = true;
     }
 }

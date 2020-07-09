@@ -4,8 +4,9 @@ import {UserInterface} from '../interfaces/user.interface';
 @Injectable()
 
 export class UsersService {
-    users: Array<UserInterface> = [
+    users: UserInterface[] = [
         {
+            id: 1,
             name: 'Peppe',
             lastname: 'Salerno',
             email: 'gsalerno@gmail.com',
@@ -15,6 +16,7 @@ export class UsersService {
             age: 28,
         },
         {
+            id: 2,
             name: 'Paolo',
             lastname: 'Ruffo',
             email: 'rufffff@gmail.com',
@@ -24,6 +26,7 @@ export class UsersService {
             age: 22
         },
         {
+            id: 3,
             name: 'Michele',
             lastname: 'Bonanno',
             email: 'bonn@gmail.com',
@@ -33,6 +36,7 @@ export class UsersService {
             age: 33
         },
         {
+            id: 4,
             name: 'Maria',
             lastname: 'Foschi',
             email: 'mariasfo@gmail.com',
@@ -55,5 +59,18 @@ export class UsersService {
         if (index >= 0) {
             this.users.splice(index, 1);
         }
+    }
+
+    updateUser(user: UserInterface) {
+        const idx = this.users.findIndex((v) => v.id === user.id);
+        alert(idx);
+        if (idx !== -1) {
+            this.users[idx] = user;
+        }
+    }
+
+    createUser(user: UserInterface) {
+        // @ts-ignore
+        this.users.splice(0, 0, user);
     }
 }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UsersService} from '../services/users.service';
-import {UserInterface} from '../interfaces/user.interface';
+import {UserClass} from '../classes/user.class';
 
 @Component({
     selector: 'tr[app-user]',
@@ -8,7 +8,7 @@ import {UserInterface} from '../interfaces/user.interface';
     styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-    @Input() user: UserInterface;
+    @Input() user: UserClass;
     @Output() userDeleted: EventEmitter<any> = new EventEmitter();
     @Output() userSelected: EventEmitter<any> = new EventEmitter();
 
