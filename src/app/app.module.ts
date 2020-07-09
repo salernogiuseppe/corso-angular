@@ -3,17 +3,21 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {UsersComponent} from './users/users.component';
-import {UsersService} from './users/users.service';
+import {UsersService} from './services/users.service';
 import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
         UsersComponent,
-        UserComponent
+        UserComponent,
+        UserDetailComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        FormsModule,
     ],
     providers: [
         UsersService

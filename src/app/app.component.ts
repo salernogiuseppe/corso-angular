@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {UserInterface} from './interfaces/user.interface';
 
 @Component({
     selector: 'app-root',
@@ -7,4 +8,9 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
     title = 'corso-angular';
+
+    userSelected: UserInterface;
+    updateUser(user: UserInterface) {
+        this.userSelected = user;
+    }
 }
