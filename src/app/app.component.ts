@@ -10,6 +10,8 @@ export class AppComponent {
     title = 'corso-angular';
     showForm = false;
     userSelected: UserClass = new UserClass();
+    price: number;
+    birthDate: string;
 
     updateUser(user: UserClass) {
         this.userSelected = user;
@@ -19,5 +21,10 @@ export class AppComponent {
     newUser() {
         this.userSelected = new UserClass();
         this.showForm = true;
+    }
+    constructor() {
+        this.price = 400501.22;
+
+        this.birthDate = '01/03/2020';
     }
 }
