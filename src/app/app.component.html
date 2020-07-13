@@ -1,15 +1,14 @@
 <h1>User Management System</h1>
+<app-nav (onNewUser)="newUser()"></app-nav>
 
-<a href="#" (click)="newUser()">New User</a>
+<router-outlet></router-outlet>
 
-<app-users (updateUser)="updateUser($event)"></app-users>
 
-<div *ngIf="showForm">
-    <app-user-detail [user]="userSelected"></app-user-detail>
-</div>
-
-{{ price | currency:'EUR':'EURI':'1.1-3':'it-IT' }}
-<br>
-{{ birthDate | date:'dd/MM/yyyy':'+1':'it-IT' }}
-<br>
-{{ 'mimmo bello molto bello' | ucfirst }}
+<!-- TEST PIPE
+<pre>
+    {{ price | currency:'EUR':'EURI':'1.1-3':'it-IT' }}
+    <br>
+    {{ birthDate | date:'dd/MM/yyyy':'+1':'it-IT' }}
+    <br>
+    {{ 'test pipe Capitalize' | ucfirst }}
+</pre>-->

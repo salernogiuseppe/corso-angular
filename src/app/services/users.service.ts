@@ -54,6 +54,10 @@ export class UsersService {
         return this.users;
     }
 
+    getUser(id: number) {
+        return this.users.find(users => users.id === id);
+    }
+
     deleteUser(user) {
         const index = this.users.indexOf(user);
         if (index >= 0) {
@@ -71,6 +75,7 @@ export class UsersService {
 
     createUser(user: UserInterface) {
         // @ts-ignore
+        user.id = this.user.length +1;
         this.users.splice(0, 0, user);
     }
 }

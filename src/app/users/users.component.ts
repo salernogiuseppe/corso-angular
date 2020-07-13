@@ -18,11 +18,21 @@ export class UsersComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.users = this._service.getUsers();
+        this.saveLocalStorage();
+    }
+
+    saveLocalStorage() {
+        if (localStorage.getItem('users') === null) {
+            this.users = this._service.getUsers();
+            localStorage.setItem('users', JSON.stringify(this.users));
+        } else {
+            this.users = JSON.parse(localStorage.getItem('users'));
+        }
     }
 
     onDeleteUser(user) {
         this._service.deleteUser(user);
+        this.saveLocalStorage();
     }
 
     onSelectedUser(user: UserInterface) {

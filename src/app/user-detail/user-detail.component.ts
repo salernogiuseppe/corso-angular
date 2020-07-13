@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserClass} from '../classes/user.class';
 import {UsersService} from '../services/users.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-user-detail',
@@ -8,9 +9,9 @@ import {UsersService} from '../services/users.service';
     styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-    private userCopy: UserClass;
+    private userCopy;
     // tslint:disable-next-line:variable-name
-    private __user: UserClass;
+    private __user;
     @Input() set user(user: UserClass) {
         this.__user = user;
         this.userCopy = Object.assign({}, user);
@@ -21,11 +22,21 @@ export class UserDetailComponent implements OnInit {
     }
 
     constructor(
-        private _userService: UsersService
+        private _userService: UsersService,
+        private route: ActivatedRoute,
+        private router: Router
     ) {
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        this.user = new UserClass();
+        this.route.params.subscribe(
+            (param) => {
+                if (!param.id) {
+                    return;
+                }
+                this.user = this._userService.getUser(+param.id);
+        });
     }
 
     saveUser(form) {
@@ -35,6 +46,7 @@ export class UserDetailComponent implements OnInit {
             this._userService.createUser(this.user);
         }
         this.resetForm(form);
+        this.router.navigate(['users']).then(r => console.log(r));
     }
 
     resetForm(form) {
